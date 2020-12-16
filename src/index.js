@@ -10,10 +10,10 @@ const onePageArticleCount = 10
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const isNullOrUndefinedOrNan = (val) => val !== null || val !== undefined || isNan(val);
+//const isNullOrUndefinedOrNan = (val)=> val !==null || val !==undefined || isNan(val);
 app.get('/newFeeds', async (req, res) => {
-    const skip = isNullOrUndefinedOrNan(req.query.offset) ? 0 : Number(req.query.offset);
-    const limit = isNullOrUndefinedOrNan(req.query.limit) ? 10 : Number(req.query.limit);
+    // const offset = isNullOrUndefinedOrNan(req.query.offset) ? 0 : Number(req.query.offset);
+    // const limit = isNullOrUndefinedOrNan(req.query.limit) ? 10 : Number(req.query.limit);
     res.send(await newsArticleModel.find().skip(Number(req.query.offset) || 0).limit(Number(req.query.limit) || 10));
 
 });
